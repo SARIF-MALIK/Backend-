@@ -48,7 +48,7 @@ function postUser(req, res){
 function updateUser(req, res){
     console.log(req.body); 
     res.json({
-        "msg":"data updated"
+        "msg":"data successfully updated"
     })
 }
 
