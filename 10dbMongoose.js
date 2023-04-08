@@ -1,14 +1,12 @@
 const express = require('express'); 
 const {mongoose, Schema} = require('mongoose')
 const app = express(); 
-
-// foodApp pass: YnXXq3FKPg11sK09
-
+const key = require('./10apikey'); 
 
 app.use(express.json()); 
 app.listen(3000); 
 
-const url = "mongodb+srv://foodApp:YnXXq3FKPg11sK09@cluster0.0gbwip0.mongodb.net/?retryWrites=true&w=majority"
+const url = `mongodb+srv://foodApp:${key}@cluster0.0gbwip0.mongodb.net/?retryWrites=true&w=majority`
 
 mongoose.connect(url)
 .then((db)=>{
@@ -44,13 +42,13 @@ const userSchema = new Schema({
   const userModel = mongoose.model('model', userSchema);
 //   user   
 
- (async function createUser(){
-    let user={
-        name:'Abhishek',
-        email:'abc@gmail.com',
-        password:'1234556',
-        confirmPassword:'1234556'
-    }
-    let data = await userModel.create(user);
-    console.log(data) 
-  })();
+//  (async function createUser(){
+//     let user={
+//         name:'Abhishek',
+//         email:'abc@gmail.com',
+//         password:'1234556',
+//         confirmPassword:'1234556'
+//     }
+//     let data = await userModel.create(user);
+//     console.log(data) 
+//   })();
