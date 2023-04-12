@@ -1,10 +1,11 @@
 const express = require('express'); 
 const userRouter = express.Router(); 
 const userModel = require('../models/12userModel');
+const protectRoute = require('./authHelper'); 
 
 userRouter
 .route('/')
-.get(getUsers)
+.get(protectRoute,getUsers)
 .post(postUser)  
 .patch(updateUser) 
 .delete(deleteUser)  
@@ -23,7 +24,7 @@ userRouter
 
 
 async function getUsers(req, res){
-    let allUsers = await userModel.findOne({name:"Abhishek"}); 
+    let allUsers = await userModel.find(); 
     res.json({msg:'list of all users', data:allUsers}); 
 }
 
@@ -84,5 +85,6 @@ function getCookies(req, res){
     console.log(cookies); 
     res.send('cookies sent')
 }
+
 
 module.exports=userRouter; 

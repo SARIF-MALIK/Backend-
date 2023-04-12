@@ -1,6 +1,8 @@
 const express = require('express'); 
 const authRouter = express.Router(); 
 const userModel = require('../models/12userModel');
+const jwt = require('jsonwebtoken');
+const JWT_KEY = 'rabsldfka12344';
 
 authRouter
 .route('/signup')
@@ -40,6 +42,10 @@ async function loginUser(req, res){
         if(user){
             //bcrypt --> compare
             if(user.password==data.password){
+                // res.cookie('isLoggedIn', true, {httpOnly:true})
+                let uid=user['_id']; 
+                let jwt_HPSig = jwt.sign({payload:uid},JWT_KEY )
+
                 return res.json({
                     message:"user logged in",
                     userDetail:data
