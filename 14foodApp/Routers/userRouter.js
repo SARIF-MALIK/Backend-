@@ -3,6 +3,7 @@ const userRouter = express.Router();
 const userModel = require('../models/12userModel');
 const protectRoute = require('./authHelper'); 
 
+
 userRouter
 .route('/')
 .get(protectRoute,getUsers)

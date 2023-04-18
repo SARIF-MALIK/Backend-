@@ -45,7 +45,7 @@ async function loginUser(req, res){
                 // res.cookie('isLoggedIn', true, {httpOnly:true})
                 let uid=user['_id']; 
                 let jwt_HPSig = jwt.sign({payload:uid},JWT_KEY )
-
+                res.cookie('login', jwt_HPSig, {httpOnly:true})
                 return res.json({
                     message:"user logged in",
                     userDetail:data
