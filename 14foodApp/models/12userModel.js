@@ -46,7 +46,7 @@ const userSchema = new Schema({
       type:String,
       default:'img/users/default.jpg'
     }
-  
+   
   });
 
   userSchema.pre('save', function(){

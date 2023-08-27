@@ -12,5 +12,4 @@ async function getData(){
     console.log(data); 
 }
 
-module.exports = getData; 
-
+module.exports = getData;
