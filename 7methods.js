@@ -1,6 +1,8 @@
 const express = require('express'); 
 
 const app = express(); 
+
+// middleware func -> post, front->json 
 app.use(express.json())
 app.listen(3000, (err)=>console.log(err));       
 
@@ -38,19 +40,20 @@ useRouter
 .get(getUserById); 
 
 function getUser(req, res){
-    res.send(users); 
+    console.log(req.query);                  /// in get method /user/?name=abhishek&age=28; 
+    res.send(users);                                      //{name: abhishek, age: 28} in req.query 
 }
 
 function postUser(req, res){
     users = [...users, req.body];
     res.json({
         mes:"data pkt received",
-        user: req.body
+        user: users
     })
 }
 
 function updateUser(req, res){
-    console.log(req.body); 
+    console.log(req.body);               
     res.json({
         "msg":"data successfully updated"
     })
